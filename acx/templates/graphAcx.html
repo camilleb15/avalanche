@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ACAS - AI_GRAPH TENSOR</title>
+
+
+
+
+  {% load static %}
+  {% csrf_token %}
+  {% for se in object %}
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+
+<link href="/static/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="icon" type="image/x-icon" href="/data/uploads/2021/10/30/favicon.png" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
+</head>
+<body id="top">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWDK42S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+
+  {% include "NavBar2.html" with header="mission2" %}
+
+    
+
+
+
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+
+
+
+
+  
+<div class="wrapper">
+      <div class="one_half btmspace-50">
+	<p> .</p>
+	<p> .</p>
+	<p> .</p>
+
+
+
+      </div>
+</div>
+
+<!-- the three headers : frequency, project, Mode -->
+<div class="wrapper row1">
+  <main class="hoc  clear  "> 
+    
+    
+    <div class="one_third first">
+
+      <div class="wrapper row1 font-x11">
+	<a id ="Monthly" class="btn2a " style = "color:#FFFFFF; background-color:#0F2644; border-color:#C6B477;" href="">Monthly</a>
+	<a id ="Quarterly" class="btn2a officialBorder3" href="">Quarterly</a>
+	<a id ="Yearly"  class="btn2a officialBorder3" href="">Yearly</a>
+	<p class="" style = "line-height : 5px; color: GREEN; font-weight:strong" >AI - powered </p>
+	<p class="font-xs" style = "line-height : 5px;"><b>Schedule type:</b>&nbsp&nbsp&nbsp <i> compounding </i></p>
+	
+      </div>
+    </div>
+    
+    
+    <div class="one_third">
+      <div class="">
+	
+	<article class="group clear  font-xs" style="text-color:#325AA; backgroud-color:#1123FF; background-repeat: no-repeat;"> 
+	  <p id="wrapUp1X" style="padding-left:5px "></p> 
+	</article>
+	
+	<!-- <div class=" font-xs "> -->
+	<!--     <canvas id="chartCoinWrapup2"></canvas> -->
+        <!-- </div> -->
+	
+      </div>
+    </div>
+    
+    <div class="one_third">
+      <div class="">
+	<article class="group  font-xs" style="text-color:#325AA; backgroud-color:#FFFFFF; background-repeat: no-repeat;"> 
+	  <p style = "line-height : 5px;">projection set: Forecast</p>
+	  <p style = "line-height : 5px;"><b> projection type:</b>&nbsp&nbsp&nbsp <i>  </i></p>
+	  <p style = "line-height : 5px;"><b> Forecast type:</b>&nbsp&nbsp&nbsp <i>  </i></p>
+	  <p style = "line-height : 5px;"><b> Forecast Method:</b>&nbsp&nbsp&nbsp <i>  </i></p>
+	  
+	  <!-- <p id="wrapUp3" style="padding-left:5px "></p> -->
+	</article>
+
+
+	<form id="filterFormProject">
+	  <span> <select  class="btn2 font-xs" style=" align:right;" name="survey" id="survey" ></select>
+	  <span> <input class="btn2 font-xs" style="align:right; " type="submit" value="Load" name="_load"> </span>
+	</form>
+	
+	
+      </div>
+    </div
+      
+      
+<!-- main body -->
+
+
+
+
+
+  <div class="one_half btmspace-80">
+
+  </div>
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<div class="wrapper row1">
+  <div class="hoc container clear"> 
+
+
+		  <div class=" two_third first btmspace-5">
+		    <div class="wrapper row1 clear font-xs">
+		      <!--<label> <strong>TABS</strong> </label>-->
+		      <a id ="productsLink" class="btn2 " href="">Survey</a>
+		      <a id ="fixedCostsLink"  class="btn2" href="">Section</a>
+		      <a id ="variableCostsLink"  class="btn2" href="">Question</a>
+		      <a id ="preOpsAssetsLink" class="btn2" href="">Survey-Question pair</a>
+		      <a id ="preOpsCostsLink"  class="btn2" href="">Users</a>
+		      <a id ="answersFill" class="btn2" href="">Answers - fill</a>
+		      <a id ="assumptionsLink" class="btn2" href="">settings</a>
+		    <!--  <a id ="personelLink" class="btn2" href="">Personel</a> -->
+		      <p> </p>
+
+
+		      <div id="newForm", class="font-xs1 table_wrapper btmspace-10">
+
+		      </div>
+		      <div id="tabLister", style="font-family:Optima, Optima; font-size:12px; border: 1px solid; font-weight:400", class=" table_wrapper">
+
+		      </div>
+	    	      
+		    </div>
+		  </div>
+
+
+
+
+	<div class=" one_third">
+	  <div  class="wrapper  left font-xs">
+	    <div class="left font-xs  officialBorder" style="float:left; color:#FF551;" >
+	      <!-- <p id="snaptime"  class="left font-xs" ><b></b> -->
+
+		  <form id="filterFormProducts">
+		    <span> <select  class="btn2 font-xs" style=" align:right;" name="coin" id="coin" ></select>
+		      <select class="btn2 font-xs" style=" align:right; color:#033300;"  name="time" id="time" ></select> </span>
+		    <span> <input class="btn2 font-xs" style="align:right; " type="submit" value="Load" name="_load"> </span>
+		  </form>
+		    
+		<span style="color:rgb(0,0,128); font-size:14px">
+		  <form id="filterVariableData">
+		    <select class="alpha left" style=" color:#000000;  " name="news" id="cogsList" ></select>
+		  </form>
+		</span>
+
+		  
+
+
+	<article class="group  " style="text-color:#325AA; backgroud-color:#FFFFFF; background-repeat: no-repeat;"> 
+	  <p style = "line-height : 5px; font-Size :14px"> System State</p>
+	  <p style = "line-height : 5px;c" class ="font-xs"> Total valuation: &nbsp&nbsp&nbsp&nbsp<b><i style="COLOR : Red">{{  totalPoints|floatformat:2  }}  </i></b></p>
+	  <p style = "line-height : 5px;" class ="font-xs" > Total Affirmative:&nbsp <b><i style="COLOR : Red">{{  totalYes|floatformat:2  }}  </i></b></p>
+	  <p style = "line-height : 5px;" class ="font-xs"> Total Negative:&nbsp&nbsp&nbsp&nbsp<b> <i style="COLOR : Red" >{{  totalNo|floatformat:2  }}  </i></b></p>
+	  
+	  <!-- <p id="wrapUp3" style="padding-left:5px "></p> -->
+	</article>
+
+
+		
+	<!--	<h5 id="pages3"  class="left font-xs"><b>IRR</b> 10Y/20Y</h5>-->
+	      </p>
+	      
+	      <article id="listing"  style="color:#FF44F; backgroud-color:#A32277; background-repeat: no-repeat;">
+	      </article>
+	    </div>
+	  </div>
+
+
+     </div>
+
+<!--      <p class="btmspace-50"><a class="btn" href="/data/{{ le.fileLocation }}">DETAILS</a></p> -->
+      <footer class="font-xs"><br> </footer>
+    </article>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+
+
+
+    	
+
+
+
+
+
+  <!-- ############################################### MISSION SECTION ######################################### -->    
+  <div class="wrapper row1 clear   center ">
+
+
+
+    
+    <div class="group btmspace-50">
+      <h4> <b>{{ se.Section2 }} </b></h4>
+      <h6 style="align:right" class="beta text5"></h6>
+
+      <span class="Row2" style="font-size:12px">
+		  <form id="statementListForm">
+		    <select class="alpha left" style=" color:#000000;" name="statement" id="statementList" ></select>
+		  </form>
+      </span>
+      
+      <div style="align:right">
+	<h6 style="align:right; font-size:15px"></h6>
+	{% if request.META.HTTP_HOST == "www.avalancheconsultancy.com" %}
+	<span><a style="align:right; font-size:13px" id="dbref" class="btn2" href="/repo/graph/?refresh=200">  <i class="fa fa-refresh" ></i>  </a><i style= "font-size: 10px"> {{ refData }} </i> </span>
+	{% else  %}
+	{% endif %}
+	
+
+
+      </div>
+
+      <div  id="mainBlotter" style="font-family:Optima, Optima" class="table_wrapper">
+        <table  style=" border: 0px; background-color:#003333;opacity:10">
+          <thead style=" border: 0px; background-color:#003333; opacity:10; ">
+            <tr style=" border: 0px; height:20px; padding-top: 1em;opacity:30%; ">
+              <th  style="font-size:10px; font-weight:200"> ITEM </th>
+	      <th  style="font-size:10px ; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      <th  style="font-size:10px; font-weight:200">  </th>
+	      
+            </tr>
+          </thead>
+          <tbody>
+
+
+
+
+
+	    {% for ttpnl in totalPnlperCoin %}
+              <tr style="border: 0px dotted blue">
+
+		<td style="width:10%; color:#FFF554; font-size:12px"> </td>
+		<td  style="width:10%; color:#FFF554; font-size:12px; font-weight:Bold" >{{ ttpnl.coinName }}</td>
+		<td></td>
+
+		<td style="width:5%; font-size:12px ">{{  ttpnl.totalNotional|floatformat:3 }}</td>
+		<td style="width:5%; font-size:12px ">{{  ttpnl.totalAmount|floatformat:3 }}</td>
+
+		{% if ttpnl.coinName == "SHIB" %}
+		<td style="width:7%; font-weight:Bold">{{  ttpnl.bookPrice|floatformat:8 }}</td>
+		{% else %}
+		<td style="width:7%; font-weight:Bold"> {{ ttpnl.bookPrice|floatformat:3}} </td>
+		{% endif %}
+		
+		{% if ttpnl.coinName == "SHIB" %}
+		<td style="width:7%; font-weight:Bold">{{  ttpnl.marketPrice|floatformat:8 }}</td>
+		{% else %}
+		<td style="width:7%; font-weight:Bold"> {{ ttpnl.marketPrice|floatformat:3}} </td>
+		{% endif %}
+		
+
+
+	      
+	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == ttpnl.coinName %}
+              {% if q.coinPercentageChange1h >= 0 %}
+              <td style="width:6%; color:#000000;  background-color:#92D050; font-size:12px  "><strong> {{q.coinPercentageChange1h }}% </strong></td>
+	      {% else %}
+              <td style="width:6% ; color:#000000;  background-color:#FF8181; font-size:12px "><strong> {{q.coinPercentageChange1h }}% </strong></td>
+	      {% endif %}
+	      {% endif %}
+	      {% endfor %}
+
+  	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == ttpnl.coinName %}
+	      {% if q.coinPercentageChange24h >= 0 %}
+              <td style="width:7%; color:#000000; background-color:#92D050;font-size:12px "><strong> {{q.coinPercentageChange24h }}% </strong></td>
+	      {% else %}
+              <td style="width:7%; color:#000000 ; background-color:#FF8181 ;font-size:12px"><strong> {{q.coinPercentageChange24h }}% </strong></td>
+	      {% endif %}
+	      {% endif %}
+	      {% endfor %}
+
+		<td style="width:10%; color:#A33554"><strong>{{ ttpnl.totalMv|floatformat:3  }} </strong></td>	      
+
+		{% if ttpnl.totalPnl >= 0 %}
+		<td style="width:8%; color:#92D050"><strong>{{ ttpnl.totalPnl|floatformat:3  }}</strong></td>
+		{% else %}
+		<td style="width:8%; color:#FF8181"><strong>{{ttpnl.totalPnl|floatformat:3  }}</strong></td>
+		{% endif %}
+
+  	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == ttpnl.coinName %}
+              <td style="width:7%; color:#000000; font-size:12px "><strong> {{q.coinVolume24h|floatformat:2 }} </strong></td>
+	      {% endif %}
+	      {% endfor %}
+
+			
+	      </tr>
+	      {% endfor %}
+
+
+
+	    <tr  style="border: 1px dotted black">
+	      <td><strong>Total </strong></td>
+              <td></td>
+              <td></td>
+	      <td style=" font-size:15px; font-weight:bold"><strong>{{  totalBv|floatformat:2  }} </strong> </td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+
+              <td style=" color:#A33554; font-size:17px; font-weight:bold"><strong>{{  totalMv|floatformat:2  }} </strong> </td>
+	      {% if totalPnl >= 0 %}
+	      <td style=" color:#92D050; font-size:17px; font-weight:bold "><strong>{{  totalPnl|floatformat:2  }} </strong> </td>
+	      {% else %}
+	      <td style=" color:#FF6347; font-size:17px; font-weight:bold "><strong>{{  totalPnl|floatformat:2  }} </strong> </td>
+	      {% endif %}
+	      <td></td>
+            </tr>
+
+	    
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </div>
+<div class=" one_third first">
+  	  <div class="wrapper row1 clear font-xs ">
+        <table  style=" border: 0px; background-color:#003333;opacity:10">
+  {% for ttpnl in statsPerAuthor %}
+
+
+              <tr style="border: 0px dotted blue">
+
+		<td  style="width:10%; font-size:12px; font-weight:Bold" >{{ ttpnl.author.first_name }}</td>
+		<td></td>
+
+		<td style="width:5%; font-size:12px ">{{  ttpnl.answerType }}</td>
+		<td style="width:5%; font-size:12px ">{{  ttpnl.avgPoints }}</td>
+		<td style="width:5%; font-size:12px ">{{  ttpnl.totalPoints }}</td>
+
+		{% if ttpnl.coinName == "SHIB" %}
+		<td style="width:7%; font-weight:Bold">{{  ttpnl.bookPrice|floatformat:8 }}</td>
+		{% else %}
+		<td style="width:7%; font-weight:Bold"> {{ ttpnl.totalYes|floatformat:3}} </td>
+		{% endif %}
+		
+		{% if ttpnl.coinName == "SHIB" %}
+		<td style="width:7%; font-weight:Bold">{{  ttpnl.marketPrice|floatformat:8 }}</td>
+		{% else %}
+		<td style="width:7%; font-weight:Bold"> {{ ttpnl.totalNo|floatformat:3}} </td>
+		{% endif %}
+
+
+</tr>
+  
+
+  {% endfor %} 
+
+	</table>
+</div>
+</div>
+
+<div class=" two_third ">
+
+
+
+  <div class="wrapper row3 clear center ">
+	<article class="group  clear officialBorder text2" > 
+	  <!-- ################################################################################################ -->
+	  <h6 class="heading" style="text-color:#FFFFFF; " > Groups and Section rating, per user</h6>
+
+
+	  <canvas id="barChart2" width="400" height="150" ></canvas>
+	</article>
+      </div>
+  
+
+</div>
+
+<p> ____</p>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+
+<div  class="btmspace-50 ">
+
+	<div  class=" two_third first">
+	  <div class="wrapper row1 clear font-xs ">
+	    <label> <strong>HISTORICAL SCORE - QUALITY TRACKER :</strong> </label>
+	    <a class="btn2 font-xs" href="/repo/graph/?interval=1d">1M</a>
+	    <a class="btn2" href="/repo/graph/?interval=1w">6M</a>
+	    <a id="b1d" class="btn2" href="/repo/graph/?interval=1d">1Y</a>
+	    <a class="btn2" href="/repo/graph/?interval=1w">FULL</a>
+	    	  <form id="filterForm">
+		  <span> <select  class="btn2 font-xs" style=" align:right;" name="coin" id="coin" ></select>	    
+		    <select class="btn2 font-xs" style=" align:right; color:#033300;"  name="time" id="time" ></select> </span> 
+		     <span> <input class="btn2 font-xs" style="align:right; " type="submit" value="Load" name="_load"> </span>
+		  </form>
+	    <canvas id="spendPerCustomerChart"  width="200" height="100" ></canvas>
+          </div>
+	</div>
+
+	<div class=" one_third">
+	  <div  class="wrapper  left font-xs">
+	    <div class="left font-xs  officialBorder" style="float:left; color:#FF551;" >
+	      <p id="snaptime"  class="left font-xs" ><b>news on:</b>
+		<span style="color:rgb(0,0,128); font-size:14px"> <form id="filterFormNews">
+		    <select class="alpha left" style=" color:#000000;  " name="news" id="newsList" ></select>
+		  </form>
+		</span>
+		<h5 id="pages"  class="right font-xs"><b>APINEWS</b> </h5>
+	      </p> 
+	      
+	      <article id="news"  style="color:#FF44F; backgroud-color:#A32277; background-repeat: no-repeat;"> 
+	      </article>
+	    </div>
+	  </div>
+	</div>
+
+
+</div>
+
+
+
+<p> ____</p>
+
+
+	
+
+
+
+    <div class="btmspace-50 "> </div>
+      
+    <div class="one_half first ">
+
+      <div class="wrapper row3 clear center ">
+	<article class="group  clear officialBorder text2" > 
+	  <!-- ################################################################################################ -->
+	  <h6 class="heading" style="text-color:#FFFFFF; " > &nbsp ACX (c) scoring per user</h6>
+
+
+	  <canvas id="barChart1" width="400" height="150" ></canvas>
+	</article>
+      </div>
+    </div>
+
+      <div class="one_half officialBorder2">
+  	<div class="wrapper row2  center">
+	  <article class="group alpha clear  text2" style="text-color:#FFFFFF; backgroud-color:#A3B477; background-repeat: no-repeat;"> 
+            <h6> &nbsp local Stats</h6>
+	    <p> {{ staticRoot }}</p>
+            <p class="btmspace-50 "> {{ currentDB }}</p> 
+
+	  </article>
+	</div>
+      </div>
+
+
+
+
+{% endfor%}
+      <script src="/data/scripts/scriptingAcx.js"></script>
+      
+</ul>
+<p></p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+ <p> </p>
+
+      <div id="comments">
+	<h2></h2>
+        <ul>
+	  {% for le in articlelinks %}
+	  <li>
+            <article>
+              <header>
+                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
+                <address>
+                {{ forloop.counter }} -  <a href="/data/{{ le.fileLocation }}"> {{ le.title}} </a>
+                </address>
+		<p> {{ request.META.HTTP_HOST }}</p>
+		<p><i> {{ le.authors }}</i> </p>
+		<p class = "fl_right" > {{ le.ratVal }}</p>  
+                <time datetime="{{le.pub_date }}"> {{ le.pub_date }}</time>
+              </header>
+              <div class="comcont">
+                <p>{{ le.description }}</p>
+              </div>
+            </article>
+          </li>
+{% endfor %}
+	
+       
+      </div>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+
+
+    <!-- ################################################################################################ -->
+
+    {% include "ACASfooter.html" with footer="mission" %}
+   
+      
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+
+
+<script src="/static/layout/scripts/jquery.min.js"></script>
+<script src="/static/layout/scripts/jquery.backtotop.js"></script>
+<script src="/static/layout/scripts/jquery.mobilemenu.js"></script> 
+
+
+
+
+</body>
+</html>

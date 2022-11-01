@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ACAS - AI_GRAPH TENSOR</title>
+
+
+
+
+  {% load static %}
+  {% csrf_token %}
+  {% for se in object %}
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+
+<link href="/static/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="icon" type="image/x-icon" href="/data/uploads/2021/10/30/favicon.png" >
+</head>
+<body id="top">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWDK42S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+
+  {% include "NavBar2.html" with header="mission" %}
+
+    
+
+<div class="wrapper">
+      <div class="one_half btmspace-50">
+	<p> .</p>
+	<p> .</p>
+	<p> .</p>
+	
+      </div>
+</div>
+
+
+<div class="wrapper row1">
+  <main class="hoc container clear  "> 
+    
+    
+    <div class="one_third first">
+     
+      <div class="wrapper row2  center btmspace-20">
+	<article class="group  clear officialBorder font-xs" style="text-color:#325AA; backgroud-color:#11122; background-repeat: no-repeat;"> 
+	  <p id="wrapUp1" style="padding-left:5px "></p> 
+	</article>
+
+      </div>
+    </div>
+    
+
+    <div class="one_third">
+      <div class="wrapper row3  center">
+	<article class="group alpha clear officialBorder font-xs" style="text-color:#325AA; backgroud-color:#11122; background-repeat: no-repeat;"> 
+	 <p id="wrapUp2" style="padding-left:5px "></p> 
+	</article>
+
+	<div class=" font-xs ">
+	    <canvas id="chartCoinWrapup2"></canvas>
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="one_third">
+      <div class="wrapper row3  center">
+	<article class="group alpha clear officialBorder font-xs" style="text-color:#325AA; backgroud-color:#11122; background-repeat: no-repeat;"> 
+	  <p id="wrapUp3" style="padding-left:5px "></p> 
+	</article>
+
+	  <div class="wrapper row1 clear font-xs ">
+	    <canvas id="chartCoin2"></canvas>
+          </div>
+
+
+      </div>
+    </div
+      
+
+<!-- main body -->
+
+
+
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a name="chap4"></a>
+<div class="wrapper row3">
+  <div class="hoc container clear"> 
+
+    <article>
+      <h2 class="heading center font-x2">Files & Documents<br> </h2>
+
+      <div id="comments">
+	<section class="clear "> 
+          <ul>
+	    {% for le in articlelinks %}
+	   
+	    <li>
+              <article>
+		<header>
+                  
+                  <div class="row3 font-x1"><figure class="clear "><img style ="width:7% ; float: right" src="/data/uploads/2020/12/19/Sharjah_Flyer_Final_thumb.jpg" alt=""></figure>
+                    {{ forloop.counter }}-<a class="row3"  href="/data/{{ le.fileLocation }}"> {{ le.title}} </a>
+                  </div>
+		   <p> <strong> {{ le.authors }}, &nbsp&nbsp{{ le.pub_date }} </strong></p>
+		</header>
+		<div class="row3X comcont">
+                  <p>{{ le.description }}</p>
+		</div>
+              </article>
+            </li>
+	   	    
+	    {% endfor %}
+	</section>
+      </div>
+
+<!--      <p class="btmspace-50"><a class="btn" href="/data/{{ le.fileLocation }}">DETAILS</a></p> -->
+      <footer class="font-xs"><br> </footer>
+    </article>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+
+
+
+	<!--
+            <div class="col-2">
+              <canvas id="salesChart"></canvas>
+            </div>
+
+	    <div class="col-2">
+	      <canvas id="paymentSuccessChart"></canvas>
+	    </div>
+	    -->
+	<div class=" two_third first">
+	  <div class="wrapper row1 clear font-xs ">
+	    <label> <strong>Interval:</strong> </label>
+	    <a class="btn2 font-xs" href="/repo/graph/?interval=1d">1H</a>
+	    <a class="btn2" href="/repo/graph/?interval=1w">4H</a>
+	    <a id="b1d" class="btn2" href="/repo/graph/?interval=1d">1D</a>
+	    <a class="btn2" href="/repo/graph/?interval=1w">1W</a>
+	    	  <form id="filterForm">
+		  <span> <select  class="btn2 font-xs" style=" align:right;" name="coin" id="coin" ></select>	    
+		    <select class="btn2 font-xs" style=" align:right; color:#033300;"  name="time" id="time" ></select> </span> 
+		     <span> <input class="btn2 font-xs" style="align:right; " type="submit" value="Load" name="_load"> </span>
+		  </form>
+	    <canvas id="spendPerCustomerChart"></canvas>
+          </div>
+	</div>
+
+	<div class=" one_third">
+	  <div  class="wrapper  left font-xs">
+	    <div class="left font-xs  officialBorder" style="float:left; color:#FF551;" >
+	      <p id="snaptime"  class="left font-xs" ><b>news on:</b>
+		<span style="color:rgb(0,0,128); font-size:14px"> <form id="filterFormNews">
+		    <select class="alpha left" style=" color:#000000;  " name="news" id="newsList" ></select>
+		  </form>
+		</span>
+		<h5 id="pages"  class="right font-xs"><b>APINEWS</b> </h5>
+	      </p> 
+	      
+	      <article id="news"  style="color:#FF44F; backgroud-color:#A32277; background-repeat: no-repeat;"> 
+	      </article>
+	    </div>
+	  </div>
+	  
+	  
+<!--
+
+	  <div class="wrapper row1 clear font-xs ">
+	    <label> <strong>Interval:</strong> </label>
+	    <a class="btn2" href="/repo/graph/?interval=1d">1H</a>
+	    <a class="btn2" href="/repo/graph/?interval=1w">4H</a>
+	    <a class="btn2" href="/repo/graph/?interval=1d">1D</a>
+	    <a class="btn2" href="/repo/graph/?interval=1w">1W</a>
+	    
+	    <canvas id="chartCoin2"></canvas>
+          </div>
+
+	  <div class="wrapper row2  center">
+	    <article class="group gamma clear row3F text2" style="text-color:#FFFFFF; backgroud-color:#A3B477; background-repeat: no-repeat;"> 
+	      <h4> &nbsp{{ se.Section5 }}</h4>
+	      <p class="btmspace-50 "> {{se.Section6 }}</p> 
+
+		  <figure class="txtoverlay"><a href="#"><img src="/data/uploads/2020/11/22/tomasz-frankowski-kBUfvkbFIoE-unsplash.jpg" alt=""></a>
+		    <figcaption class="txtcaption">
+		      <h6 class="heading"><i class="block btmspace-10 fa fa-turkish-lira"> Financial Services </i></h6>
+		      <p> Remodeling your financial services with cutting edge technology  </p>
+		      <footer><a href="/Pservlet/repo/expertise#financial">View Details &raquo;</a></footer>
+		    </figcaption>
+		  </figure>
+
+	    </article>
+	  </div>
+
+
+-->
+
+
+
+
+	</div>
+
+	
+	<!--
+        <div class="col-2">
+          <canvas id="paymentMethodChart"></canvas>
+        </div>
+      </div>
+      -->
+
+
+
+    	
+
+<script src="/data/scripts/scripting.js"></script>   
+
+
+
+  <!-- ############################################### MISSION SECTION ######################################### -->    
+  <div class="wrapper row3 clear   center ">
+
+    <div class="group btmspace-50">
+      <h2> <b>{{ se.Section2 }} </b></h2>
+      <h6 style="align:right" class="beta text5"></h6>
+      <div style="align:right">
+	<h6 style="align:right; font-size:15px">{{ latest_date }}</h6>
+	{% if request.META.HTTP_HOST == "www.avalancheconsultancy.com" %}
+	<span><a style="align:right; font-size:13px" id="dbref" class="btn2" href="/repo/graph/?refresh=200">  <i class="fa fa-refresh" ></i>  </a><i style= "font-size: 10px"> {{ refData }} </i> </span>
+	{% else %}
+	{% endif %}
+	<p> <a id="dbref" class="DBREF" href="/repo/blotter">Blotter</a> </p>
+
+
+      </div>
+      <div class="table_wrapper">
+        <table style=" border: 1.2px; background-color:#0F2644;">
+          <thead style=" border: 1.2px; background-color:#0F2644;">
+            <tr style=" border: 1.2px; background-color:#0F2644;height:20px; padding-top: 1em; ">
+              <th  style="font-size:10px"><strong> Entry </strong></th>
+	      <th  style="font-size:10px" > <strong> Coin </strong></th>
+	      <th  style="font-size:10px"> <strong> BookDate </strong></th>
+	      <th  style="font-size:10px"> <strong> Init Invest </strong></th>
+	      <th  style="font-size:10px"> <strong> Amount </strong></th>
+	      <th  style="font-size:10px"> <strong> BookPrice </strong></th>
+	      <th  style="font-size:10px"> <strong> MarketPrice </strong></th>
+	      <th  style="font-size:10px"> <strong> %chg  </strong></th>
+	      <th  style="font-size:10px"> <strong> %chg24h </strong></th>
+	      <th  style="font-size:10px" > <strong> MV  </strong></th>
+	      <th  style="font-size:10px"> <strong> PNL </strong></th>
+	      <th  style="font-size:10px"> <strong> QuoteLastUpdated </strong></th>
+	      
+            </tr>
+          </thead>
+          <tbody>
+
+
+
+
+
+	    {% for ttpnl in totalPnlperCoin %}
+              <tr style="border: 1px dotted blue">
+
+		<td style="width:10%; color:#133554; font-size:12px"> </td>
+		<td  style="width:10%; color:#133554; font-size:12px; font-weight:Bold" >{{ ttpnl.coinName }}</td>
+		<td></td>
+
+		<td style="width:5%; font-size:12px ">{{  ttpnl.totalNotional|floatformat:3 }}</td>
+		<td style="width:5%; font-size:12px ">{{  ttpnl.totalAmount|floatformat:3 }}</td>
+
+		{% if ttpnl.coinName == "SHIB" %}
+		<td style="width:7%; font-weight:Bold">{{  ttpnl.bookPrice|floatformat:8 }}</td>
+		{% else %}
+		<td style="width:7%; font-weight:Bold"> {{ ttpnl.bookPrice|floatformat:3}} </td>
+		{% endif %}
+		
+		{% if ttpnl.coinName == "SHIB" %}
+		<td style="width:7%; font-weight:Bold">{{  ttpnl.marketPrice|floatformat:8 }}</td>
+		{% else %}
+		<td style="width:7%; font-weight:Bold"> {{ ttpnl.marketPrice|floatformat:3}} </td>
+		{% endif %}
+		
+
+
+	      
+	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == ttpnl.coinName %}
+              {% if q.coinPercentageChange1h >= 0 %}
+              <td style="width:6%; color:#000000;  background-color:#92D050; font-size:12px  "><strong> {{q.coinPercentageChange1h }}% </strong></td>
+	      {% else %}
+              <td style="width:6% ; color:#000000;  background-color:#FF8181; font-size:12px "><strong> {{q.coinPercentageChange1h }}% </strong></td>
+	      {% endif %}
+	      {% endif %}
+	      {% endfor %}
+
+  	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == ttpnl.coinName %}
+	      {% if q.coinPercentageChange24h >= 0 %}
+              <td style="width:7%; color:#000000; background-color:#92D050;font-size:12px "><strong> {{q.coinPercentageChange24h }}% </strong></td>
+	      {% else %}
+              <td style="width:7%; color:#000000 ; background-color:#FF8181 ;font-size:12px"><strong> {{q.coinPercentageChange24h }}% </strong></td>
+	      {% endif %}
+	      {% endif %}
+	      {% endfor %}
+
+		<td style="width:10%; color:#A33554"><strong>{{ ttpnl.totalMv|floatformat:3  }} </strong></td>	      
+
+		{% if ttpnl.totalPnl >= 0 %}
+		<td style="width:8%; color:#92D050"><strong>{{ ttpnl.totalPnl|floatformat:3  }}</strong></td>
+		{% else %}
+		<td style="width:8%; color:#FF8181"><strong>{{ttpnl.totalPnl|floatformat:3  }}</strong></td>
+		{% endif %}
+
+  	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == ttpnl.coinName %}
+              <td style="width:7%; color:#000000; font-size:12px "><strong> {{q.coinVolume24h|floatformat:2 }} </strong></td>
+	      {% endif %}
+	      {% endfor %}
+
+			
+	      </tr>
+	      {% endfor %}
+
+
+
+	    <tr  style="border: 1px dotted black">
+	      <td><strong>Total </strong></td>
+              <td></td>
+              <td></td>
+	      <td style=" font-size:15px; font-weight:bold"><strong>{{  totalBv|floatformat:2  }} </strong> </td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+
+              <td style=" color:#A33554; font-size:17px; font-weight:bold"><strong>{{  totalMv|floatformat:2  }} </strong> </td>
+	      {% if totalPnl >= 0 %}
+	      <td style=" color:#92D050; font-size:17px; font-weight:bold "><strong>{{  totalPnl|floatformat:2  }} </strong> </td>
+	      {% else %}
+	      <td style=" color:#FF6347; font-size:17px; font-weight:bold "><strong>{{  totalPnl|floatformat:2  }} </strong> </td>
+	      {% endif %}
+	      <td></td>
+            </tr>
+            <tr style="width:6%; color:#000000;  background-color:#92A0A0; font-size:12px  ">
+             <td style="width:10%; color:#8282FF; font-size:12px height:10px;"><strong>Transactional </strong></td> 
+	     <td  style="font-size:10px" > <strong> Coin </strong></td>
+	     <td  style="font-size:10px"> <a href="/repo/graph/?sort=coinBookDate"> <strong> BookDate </strong> <i class="fa fa-arrow-circle-up" ></i>  </a></td>
+	     <td  style="font-size:10px"> <strong> Init Invest </strong></td>
+	     <td  style="font-size:10px"> <a href="/repo/graph/?sort=coinAmount"> <strong> Amount </strong> <i class="fa fa-arrow-circle-up" ></i>  </a></td>
+	     <td  style="font-size:10px"> <strong> BookPrice </strong></td>
+	     <td  style="font-size:10px"> <strong> MarketPrice </strong></td>
+	     <td  style="font-size:10px"> <strong> %chg  </strong></td>
+	     <td  style="font-size:10px"> <strong> %chg24h </strong></td>
+	     <td  style="font-size:10px" > <strong> MV  </strong></td>
+	     <td  style="font-size:10px"> <strong> PNL </strong></td>
+	     <td  style="font-size:10px"> <strong> QuoteLastUpdated </strong></td>
+	     
+	    </tr>
+
+	    
+
+
+	    
+	    {% for port in portfolio %}
+	    
+            <tr  style="border: 0.5px dotted blue ; padding-top: 1em; height:10px;">
+	      <td  style="width:10%; color:#133554; font-size:12px height:10px;">{{ forloop.counter }}</td>
+              <td style="width:10%; color:#133554; font-size:12px" ><b>{{ port.coinID.coinSymbol }} </b></td>
+              <td style="width:10%; font-size:12px">{{ port.coinBookDate|date:'Y-m-d'  }}</td>
+
+	      {% if port.coinSymbol == "SHIB" %}
+	      <td style="width:5%; font-size:12px ">{{  port.coinUSDNotional|floatformat:8 }}</td>
+	      {% else %}
+	      <td style="width:5%; font-size:12px"> {{ port.coinUSDNotional|floatformat:3}} </td>
+	      {% endif %}
+
+	      {% if port.coinSymbol == "SHIB" %}
+	      <td style="width:5%; font-size:12px ">{{  port.coinAmount|floatformat:3 }}</td>
+	      {% else %}
+	      <td style="width:5%; font-size:12px"> {{ port.coinAmount|floatformat:3 }} </td>
+	      {% endif %}
+	      
+	      {% if port.coinID.coinSymbol == "SHIB" %}
+	      <td style="width:7%; font-weight:Bold">{{  port.coinBookPrice|floatformat:8 }}</td>
+	      {% else %}
+	      <td style="width:7%; font-weight:Bold"> {{ port.coinBookPrice|floatformat:3}} </td>
+	      {% endif %}
+
+	      {% if port.coinID.coinSymbol == "SHIB" %}
+	      <td style="width:5%;  font-weight:Bold" >{{ port.coinMarketPrice|floatformat:8  }}</td>
+	      {% else %}
+	      <td style="width:5%;  font-weight:Bold" >{{ port.coinMarketPrice|floatformat:3  }}</td>
+	      {% endif %}
+	      
+	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == port.coinID.coinSymbol %}
+              {% if q.coinPercentageChange1h >= 0 %}
+              <td style="width:6%; color:#000000;  background-color:#92D050; font-size:12px  "><strong> {{q.coinPercentageChange1h }}% </strong></td>
+	      {% else %}
+              <td style="width:6% ; color:#000000;  background-color:#FF8181; font-size:12px "><strong> {{q.coinPercentageChange1h }}% </strong></td>
+	      {% endif %}
+	      {% endif %}
+	      {% endfor %}
+
+  	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == port.coinID.coinSymbol %}
+	      {% if q.coinPercentageChange24h >= 0 %}
+              <td style="width:7%; color:#000000; background-color:#92D050;font-size:12px "><strong> {{q.coinPercentageChange24h }}% </strong></td>
+	      {% else %}
+              <td style="width:7%; color:#000000 ; background-color:#FF8181 ;font-size:12px"><strong> {{q.coinPercentageChange24h }}% </strong></td>
+	      {% endif %}
+	      {% endif %}
+	      {% endfor %}
+
+	      <td style="width:10%; color:#A33554"><strong>{{ port.myMv|floatformat:3  }} </strong></td>
+
+	      {% if port.myPnl >= 0 %}
+	      <td style="width:8%; color:#92D050"><strong>{{ port.myPnl|floatformat:3  }}</strong></td>
+	      {% else %}
+	      <td style="width:8%; color:#FF8181"><strong>{{ port.myPnl|floatformat:3  }}</strong></td>
+	      {% endif %}
+	      
+	      {% for q in pct_chg %}
+	      {% if q.coinID.coinSymbol == port.coinID.coinSymbol %}
+              <td style="width:20%; color:#120B5D"><strong> {{q.coinQuoteLastUpdated }} </strong></td>
+	      {% endif %}
+	      {% endfor %}
+
+	      
+	    </tr>
+	    {% endfor %}
+	    
+	    
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </div>
+    <div class="clear"></div>
+
+
+      
+    <div class="one_half first ">
+
+      <div class="wrapper row3 clear center ">
+	<article class="group alpha clear officialBorder text2" > 
+	  <!-- ################################################################################################ -->
+	  <h4 class="heading" style="text-color:#FFFFFF; " > &nbsp{{ se.Section3}}</h4>
+		<p> {{ request.META.HTTP_HOST }}</p>
+	  <p class="btmspace-50 "> {{se.Section4 }}</p> 
+	</article>
+      </div>
+    </div>
+
+      <div class="one_half officialBorder2">
+  	<div class="wrapper row2  center">
+	  <article class="group gamma clear row3F text2" style="text-color:#FFFFFF; backgroud-color:#A3B477; background-repeat: no-repeat;"> 
+            <h4> &nbsp{{ se.Section5 }}</h4>
+            <p class="btmspace-50 "> {{se.Section6 }}</p> 
+	  </article>
+	</div>
+      </div>
+
+
+
+
+{% endfor%}
+
+</ul>
+<p>eee </p>
+<p> rrr</p>
+<p> </p>
+<p> </p>
+<p> </p>
+ <p> </p>
+
+      <div id="comments">
+	<h2></h2>
+        <ul>
+	  {% for le in articlelinks %}
+	  <li>
+            <article>
+              <header>
+                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
+                <address>
+                {{ forloop.counter }} -  <a href="/data/{{ le.fileLocation }}"> {{ le.title}} </a>
+                </address>
+		<p> {{ request.META.HTTP_HOST }}</p>
+		<p><i> {{ le.authors }}</i> </p>
+		<p class = "fl_right" > {{ le.ratVal }}</p>  
+                <time datetime="{{le.pub_date }}"> {{ le.pub_date }}</time>
+              </header>
+              <div class="comcont">
+                <p>{{ le.description }}</p>
+              </div>
+            </article>
+          </li>
+{% endfor %}
+	
+       
+      </div>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+
+
+    <!-- ################################################################################################ -->
+
+    {% include "ACASfooter.html" with footer="mission" %}
+   
+      
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+
+
+<script src="/static/layout/scripts/jquery.min.js"></script>
+<script src="/static/layout/scripts/jquery.backtotop.js"></script>
+<script src="/static/layout/scripts/jquery.mobilemenu.js"></script> 
+
+
+
+
+</body>
+</html>
